@@ -10,7 +10,7 @@ public class PasswordChecker {
     boolean oneNumSpecChar = false;
     String pw;
 
-    /* (.) any character; * zero or more times */
+    // (.) any character; * zero or more times
     String specialRegex = "(.)*[!\"#$%&'()*+,-./:;<=>?@](.)*";
 
     public PasswordChecker(String pw) {
