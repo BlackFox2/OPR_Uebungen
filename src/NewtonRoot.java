@@ -8,17 +8,17 @@ public class NewtonRoot {
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        int n;
+        double n;
         double sRoot , cRoot;
         System.out.print("Bitte geben Sie eine Zahl ein: ");
-        n = s.nextInt();
+        n = s.nextDouble();
         sRoot = squareRoot(n);
-        System.out.printf("Die Quadratwurzel von %d lautet %.15f\n", n, sRoot);
+        System.out.printf("Die Quadratwurzel von %e lautet %.15f\n", n, sRoot);
         cRoot = cubicRoot(n);
-        System.out.printf("Die Kubikwurzel von %d lautet %.15f\n", n, cRoot);
+        System.out.printf("Die Kubikwurzel von %e lautet %.15f\n", n, cRoot);
     }
 
-    public static double squareRoot(int n) {
+    public static double squareRoot(double n) {
         double target_diff = 0.000001;
         double q = 1.0;
         double act_diff;
@@ -31,7 +31,7 @@ public class NewtonRoot {
         return q;
     }
 
-    public static double cubicRoot(int n) {
+    public static double cubicRoot(double n) {
         double target_diff = 0.000001;
         double q = 1.0;
         double act_diff;
