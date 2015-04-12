@@ -82,6 +82,8 @@ public class DateChecker {
                         }
                     }
                 }
+            } else {                                        // not a valid month input
+                return false;
             }
         }
         return true;
