@@ -1,3 +1,5 @@
+package uebung1;
+
 /**
  * A program to check one or more given passwords for important attributes regarding the password strength.
  * These attributes are the length, capital/lower case letters, numbers, special characters and combinations of them.

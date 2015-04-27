@@ -1,9 +1,11 @@
+package uebung1;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /**
- * JUnitTest for testing the DateChecker class and it's functionality.
+ * JUnitTest for testing the uebung1.DateChecker class and it's functionality.
  *
  * @author Markus Marihart
  * @version 1.0
@@ -11,7 +13,7 @@ import static org.junit.Assert.*;
 public class DateCheckerTest {
 
     /**
-     * Checks the testCheckDate function from DateChecker class with different inputs.
+     * Checks the testCheckDate function from uebung1.DateChecker class with different inputs.
      * @throws Exception
      */
     @Test

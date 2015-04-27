@@ -1,3 +1,5 @@
+package uebung1;
+
 import java.util.Scanner;
 
 /**

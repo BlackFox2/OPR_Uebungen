@@ -1,9 +1,11 @@
+package uebung1;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /**
- * JUnitTest for testing the NewtonRoot class and it's functionality.
+ * JUnitTest for testing the uebung1.NewtonRoot class and it's functionality.
  *
  * @author Markus Marihart
  * @version 1.0
@@ -11,7 +13,7 @@ import static org.junit.Assert.*;
 public class NewtonRootTest {
 
     /**
-     * Checks the squareRoot function from NewtonRoot class with different inputs.
+     * Checks the squareRoot function from uebung1.NewtonRoot class with different inputs.
      * @throws Exception
      */
     @Test
@@ -37,7 +39,7 @@ public class NewtonRootTest {
     }
 
     /**
-     * Checks the cubicRoot function from NewtonRoot class with different inputs.
+     * Checks the cubicRoot function from uebung1.NewtonRoot class with different inputs.
      * @throws Exception
      */
     @Test
