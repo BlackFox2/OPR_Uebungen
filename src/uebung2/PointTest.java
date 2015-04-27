@@ -15,14 +15,14 @@ public class PointTest {
         Point p2 = new Point(3,3);
         Double res = p1.distance(p2);
         double res2 = p2.distance(p1);
-        assertEquals(res, 1.41421356237, 0.00000000001);
+        assertEquals(1.41421356237, res, 0.00000000001);
         assertEquals(res, res2, 0.0);
 
         p1 = new Point(1,1);
         p2 = new Point(100, 120);
         res = p1.distance(p2);
         res2 = p2.distance(p1);
-        assertEquals(res, 154.79664079, 0.00000001);
+        assertEquals(154.79664079, res, 0.00000001);
         assertEquals(res, res2, 0.0);
 
     }
