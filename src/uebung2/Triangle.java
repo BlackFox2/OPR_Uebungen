@@ -9,7 +9,7 @@ public class Triangle {
     Triangle(Point a, Point b, Point c) {
         points[0] = a;
         points[1] = b;
-        points[3] = c;
+        points[2] = c;
     }
 
     double perimeter() {
@@ -30,14 +30,26 @@ public class Triangle {
     }
 
     boolean isSame(Triangle t, double within) {
-        if(points[0].isSame(t.points[0], within) || points[0].isSame(t.points[1], within) || points[0].isSame(points[2], within)) {
-            return false;
+        if(!points[0].isSame(t.points[0], within)) {
+            if (!points[0].isSame(t.points[1], within)) {
+                if (!points[0].isSame(points[2], within)) {
+                    return false;
+                }
+            }
         }
-        if(points[1].isSame(t.points[0], within) || points[0].isSame(t.points[1], within) || points[0].isSame(points[2], within)) {
-            return false;
+        if(!points[1].isSame(t.points[0], within)) {
+            if (!points[0].isSame(t.points[1], within)) {
+                if (!points[0].isSame(points[2], within)) {
+                    return false;
+                }
+            }
         }
-        if(points[2].isSame(t.points[0], within) || points[0].isSame(t.points[1], within) || points[0].isSame(points[2], within)) {
-            return false;
+        if(!points[2].isSame(t.points[0], within)) {
+            if (!points[0].isSame(t.points[1], within)) {
+                if (!points[0].isSame(points[2], within)) {
+                    return false;
+                }
+            }
         }
         return true;
     }
