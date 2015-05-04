@@ -3,7 +3,7 @@ package uebung2;
 /**
  * Created by @author
  */
-public class ArrayList implements List, Sortable {
+public class ArrayList implements List, Sortable, Deque {
     Node[] elements = new Node[4];
     int counter = 0;
 
@@ -18,11 +18,7 @@ public class ArrayList implements List, Sortable {
     @Override
     public void add(Node element) {
         if(counter == elements.length) {
-            Node[] helper = new Node[elements.length*2];
-            for(int i = 0; i < elements.length; i++) {
-                helper[i] = elements[i];
-            }
-            elements = helper;
+            elements = doubleArraySize(elements);
         }
         elements[counter] = element;
         counter++;
@@ -38,25 +34,33 @@ public class ArrayList implements List, Sortable {
      */
     @Override
     public void remove(int key) {
-        for(int i = 0; i < counter-1; i++) {
+        int max = counter;
+        int lastIndex = counter-1;
+        for(int i = 0; i < max; i++) {
             if(elements[i].getKey() == key) {
+                if(i == lastIndex) {
+                    lastIndex--;
+                }
                 elements[i] = null;
                 counter--;
             }
         }
-        for(int i = 0; i < elements.length; i++) {
+        int closed = 0;
+        int old = max-(max-(lastIndex+1));
+        for(int i = 0; closed < old-counter; i++) {
             if(elements[i] == null) {
-                int moved = 0;
-                for(int x = i; x < counter; i++) {
-                    if(moved == counter) {
-                        break;
+                int y = i+1;
+                while(elements[y] == null) {
+                    y++;
+                    if(y-i > 1) {
+                        old--;
                     }
-                    if(elements[x] != null) {
-                        elements[x-1] = elements[x];
-                        moved++;
-                    }
-
                 }
+                for(int x = y; x <= lastIndex; x++) {
+                    elements[i+(x-y)] = elements[x];
+                    elements[x] = null;
+                }
+                closed++;
             }
         }
     }
@@ -164,9 +168,41 @@ public class ArrayList implements List, Sortable {
         }while(n > 1);
     }
 
+    private Node[] doubleArraySize(Node[] array) {
+        Node[] res = new Node[array.length*2];
+        System.arraycopy(array, 0, res, 0, array.length);
+        return res;
+    }
+
+    @Override
+    public void addHead(Node e) {
+        Node[] helper = elements;
+        if(counter+1 == elements.length) {
+            elements = doubleArraySize(elements);
+        }
+        System.arraycopy(helper, 0, elements, 1, helper.length);
+        elements[0] = e;
+        counter++;
+    }
+
+    @Override
+    public void addTail(Node e) {
+        add(e);
+    }
+
+    @Override
+    public void removeHead() {
+        remove(elements[0].getKey());
+    }
+
+    @Override
+    public void removeTail() {
+        remove(elements[counter-1].getKey());
+    }
+
     public String toString() {
         String res = "";
-        for(int i = 0; i < counter-1; i++) {
+        for(int i = 0; i < counter; i++) {
             res += elements[i].toString();
         }
         return res;
