@@ -1,10 +1,13 @@
 package uebung2;
 
 /**
- * Created by @author
+ * Only a test implementation to put in the ArrayList object for testing purposes. No real functionality implemented.
+ *
+ * @author Markus Marihart
+ * @version 1.0
  */
 public class NodeImpl implements Node{
-    int key = 0;
+    private int key = 0;
 
     public NodeImpl(int value) {
         this.key = value;
@@ -19,6 +22,9 @@ public class NodeImpl implements Node{
         return key;
     }
 
+    /**
+     * @return a <code>String</code> representation of the element.
+     */
     @Override
     public String toString() {
         return Integer.toString(key);

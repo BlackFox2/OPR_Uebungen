@@ -5,10 +5,17 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by @author
+ * JUnitTest for testing the uebung2.Point class and it's functionality
+ *
+ * @author Markus Marihart
+ * @version 1.0
  */
 public class PointTest {
 
+    /**
+     * Test the distance method
+     * @throws Exception
+     */
     @Test
     public void testDistance() throws Exception {
         Point p1 = new Point(2,2);
@@ -27,6 +34,10 @@ public class PointTest {
 
     }
 
+    /**
+     * Tests the isSame method
+     * @throws Exception
+     */
     @Test
     public void testIsSame() throws Exception {
         Point p1 = new Point(2,2);
@@ -46,6 +57,10 @@ public class PointTest {
 
     }
 
+    /**
+     * Tests the moved method
+     * @throws Exception
+     */
     @Test
     public void testMoved() throws Exception {
         Point p1 = new Point(2,2);
@@ -62,6 +77,8 @@ public class PointTest {
 
         assertEquals(p1.getX()+moveX, p2.getX(), 0.0);
         assertEquals(p1.getY()+moveY, p2.getY(), 0.0);
+
+        assertNull(p1.moved(null, null));
 
     }
 }

@@ -5,10 +5,17 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by @author
+ * JUnitTest for testing the uebung2.Triangle class and it's functionality
+ *
+ * @author Markus Marihart
+ * @version 1.0
  */
 public class TriangleTest {
 
+    /**
+     * Test the perimeter method
+     * @throws Exception
+     */
     @Test
     public void testPerimeter() throws Exception {
         Triangle t = new Triangle(new Point(1,1), new Point(3,1), new Point(3,2));
@@ -18,6 +25,10 @@ public class TriangleTest {
 
     }
 
+    /**
+     * Test the area method
+     * @throws Exception
+     */
     @Test
     public void testArea() throws Exception {
         Triangle t = new Triangle(new Point(1,1), new Point(3,1), new Point(3,2));
@@ -26,6 +37,10 @@ public class TriangleTest {
 
     }
 
+    /**
+     * Test the isSame method
+     * @throws Exception
+     */
     @Test
     public void testIsSame() throws Exception {
         Triangle t = new Triangle(new Point(1,1), new Point(3,1), new Point(3,2));
@@ -57,6 +72,10 @@ public class TriangleTest {
 
     }
 
+    /**
+     * Test the moved method
+     * @throws Exception
+     */
     @Test
     public void testMoved() throws Exception {
         Triangle t = new Triangle(new Point(1,1), new Point(3,1), new Point(3,2));
@@ -88,6 +107,10 @@ public class TriangleTest {
         }
     }
 
+    /**
+     * Test the zoomed method
+     * @throws Exception
+     */
     @Test
     public void testZoomed() throws Exception {
         Triangle t = new Triangle(new Point(1,1), new Point(3,1), new Point(3,2));
