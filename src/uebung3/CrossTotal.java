@@ -32,7 +32,7 @@ public class CrossTotal implements Checksum{
      * @param character the byte to work on
      * @return      the digits stored in an int array
      */
-    protected int[] getDigits(int character) {
+    int[] getDigits(int character) {
         int x = character;
         int[] result;
         int i = 0;
@@ -64,7 +64,7 @@ public class CrossTotal implements Checksum{
      *                          <code>false</code> start with an subtraction
      * @return                  the checksum for these digits
      */
-    protected int calculateSumOfChar(int[] digits, boolean isAlternating, boolean add) {
+    int calculateSumOfChar(int[] digits, boolean isAlternating, boolean add) {
         int temp = 0;
         for(int i = digits.length-1; i >= 0; i--) {
             if(add) {
