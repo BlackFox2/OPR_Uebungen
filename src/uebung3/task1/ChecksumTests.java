@@ -1,4 +1,4 @@
-package uebung3;
+package uebung3.task1;
 
 import org.junit.Test;
 

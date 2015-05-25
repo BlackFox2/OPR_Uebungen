@@ -1,4 +1,4 @@
-package uebung3;
+package uebung3.task1;
 
 /**
  * This interface has to be implemented by all classes which implement an algorithm for calculating a checksum.

@@ -1,4 +1,4 @@
-package uebung3;
+package uebung3.task1;
 
 /**
  * This class is a simple implementation to calculate a cross total checksum for a given string.

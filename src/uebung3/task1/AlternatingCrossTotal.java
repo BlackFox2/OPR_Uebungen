@@ -1,4 +1,4 @@
-package uebung3;
+package uebung3.task1;
 
 /**
  * This class is an implementation to calculate alternating cross total of a given string.
