@@ -8,9 +8,7 @@ package uebung3;
  */
 public class CrossTotal implements Checksum{
 
-    private int sum = 0;
-    private boolean isAlternating = false;
-    private boolean add = true;
+    protected int sum = 0;
     /**
      * Takes a string as input and calculates the checksum. In order to calculate the checksum the char representation
      * of every letter is taken and aggregated
@@ -22,7 +20,7 @@ public class CrossTotal implements Checksum{
     public int checksum(String input) {
         byte[] bytes = input.getBytes();
         for(byte x : bytes) {
-            sum = calculateSumOfChar(getDigits(x));
+            sum = calculateSumOfChar(getDigits(x), false, true);
         }
         return sum;
     }
@@ -33,7 +31,7 @@ public class CrossTotal implements Checksum{
      * @param character the byte to work on
      * @return      the digits stored in an int array
      */
-    private int[] getDigits(byte character) {
+    protected int[] getDigits(byte character) {
         int x = character;
         int[] result;
         int i = 0;
@@ -58,9 +56,13 @@ public class CrossTotal implements Checksum{
      * with which sign to start for this number.
      *
      * @param digits            the digits to work on
+     * @param isAlternating     <code>true</code> calculate the alternating cross total
+     *                          <code>false</code> calculate the normal cross total
+     * @param add               <code>true</code> start with an addition
+     *                          <code>false</code> start with an subtraction
      * @return                  the checksum for these digits
      */
-    private int calculateSumOfChar(int[] digits) {
+    protected int calculateSumOfChar(int[] digits, boolean isAlternating, boolean add) {
         int sum = 0;
         for(int digit : digits) {
             if(add) {
@@ -83,11 +85,4 @@ public class CrossTotal implements Checksum{
         return sum;
     }
 
-    public void setIsAlternating(boolean isAlternating) {
-        this.isAlternating = isAlternating;
-    }
-
-    public void setAdd(boolean add) {
-        this.add = add;
-    }
 }
