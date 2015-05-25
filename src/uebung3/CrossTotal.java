@@ -8,7 +8,7 @@ package uebung3;
  */
 public class CrossTotal implements Checksum{
 
-    protected int sum = 0;
+
     /**
      * Takes a string as input and calculates the checksum. In order to calculate the checksum the char representation
      * of every letter is taken and aggregated
@@ -19,8 +19,9 @@ public class CrossTotal implements Checksum{
     @Override
     public int checksum(String input) {
         byte[] bytes = input.getBytes();
+        int sum = 0;
         for(byte x : bytes) {
-            sum = calculateSumOfChar(getDigits(x), false, true);
+            sum += calculateSumOfChar(getDigits(x), false, true);
         }
         return sum;
     }
@@ -31,7 +32,7 @@ public class CrossTotal implements Checksum{
      * @param character the byte to work on
      * @return      the digits stored in an int array
      */
-    protected int[] getDigits(byte character) {
+    protected int[] getDigits(int character) {
         int x = character;
         int[] result;
         int i = 0;
@@ -45,12 +46,13 @@ public class CrossTotal implements Checksum{
         while(x > 0) {
             result[i] = x % 10;
             x /= 10;
+            i++;
         }
         return result;
     }
 
     /**
-     * This method calculates the cross total of the given digits.
+     * This method calculates the cross total of the given digits in reverse order.
      * It supports different modes, indicated by the two boolean variables.
      * To calculate the alternating cross total you have to set isAlternating. Furthermore it is needed to indicate
      * with which sign to start for this number.
@@ -63,26 +65,18 @@ public class CrossTotal implements Checksum{
      * @return                  the checksum for these digits
      */
     protected int calculateSumOfChar(int[] digits, boolean isAlternating, boolean add) {
-        int sum = 0;
-        for(int digit : digits) {
+        int temp = 0;
+        for(int i = digits.length-1; i >= 0; i--) {
             if(add) {
-                sum += digit;
+                temp += digits[i];
             } else {
-                sum -= digit;
+                temp -= digits[i];
             }
             if(isAlternating) {
                 add = !add;
             }
         }
-        return sum;
-    }
-
-    /**
-     * Getter for the int variable sum
-     * @return  sum
-     */
-    public int getSum() {
-        return sum;
+        return temp;
     }
 
 }

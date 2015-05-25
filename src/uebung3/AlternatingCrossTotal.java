@@ -19,10 +19,11 @@ public class AlternatingCrossTotal extends CrossTotal implements Checksum {
     public int checksum(String input) {
         byte[] bytes = input.getBytes();
         boolean add = true;
+        int sum = 0;
         for(byte x: bytes) {
-            sum = calculateSumOfChar(getDigits(x), true, add);
+            sum += calculateSumOfChar(getDigits(x), true, add);
             if((int)x > 100 || (int) x < 10){
-                add = false;
+                add = !add;
             } else {
                 add = true;
             }

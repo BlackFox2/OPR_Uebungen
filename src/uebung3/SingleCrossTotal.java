@@ -17,10 +17,11 @@ public class SingleCrossTotal extends CrossTotal implements Checksum{
      */
     @Override
     public int checksum(String input) {
-        super.checksum(input);
+        int sum = super.checksum(input);
+
         while(sum >= 10) {
-            String x = Integer.toString(sum);
-            super.checksum(x);
+            int[] array = super.getDigits(sum);
+            sum = super.calculateSumOfChar(array, false, true);
         }
 
         return sum;
