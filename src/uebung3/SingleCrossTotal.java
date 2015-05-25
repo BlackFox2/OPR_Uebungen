@@ -6,7 +6,7 @@ package uebung3;
  * @author Markus Marihart
  * @version 1.0
  */
-public class SingleCrossTotal extends CrossTotal {
+public class SingleCrossTotal extends CrossTotal implements Checksum{
 
     /**
      * Takes a string as input and calculates the checksum. In order to calculate the checksum the char representation
@@ -18,10 +18,11 @@ public class SingleCrossTotal extends CrossTotal {
     @Override
     public int checksum(String input) {
         super.checksum(input);
-        while(getSum() >= 10) {
-            String x = Integer.toString(getSum());
+        while(sum >= 10) {
+            String x = Integer.toString(sum);
             super.checksum(x);
         }
-        return getSum();
+
+        return sum;
     }
 }
