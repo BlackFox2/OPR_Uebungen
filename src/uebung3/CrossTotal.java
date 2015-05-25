@@ -9,6 +9,8 @@ package uebung3;
 public class CrossTotal implements Checksum{
 
     private int sum = 0;
+    private boolean isAlternating = false;
+    private boolean add = true;
     /**
      * Takes a string as input and calculates the checksum. In order to calculate the checksum the char representation
      * of every letter is taken and aggregated
@@ -20,7 +22,7 @@ public class CrossTotal implements Checksum{
     public int checksum(String input) {
         byte[] bytes = input.getBytes();
         for(byte x : bytes) {
-            sum = calculateSumOfChar(getDigits(x), false, true);
+            sum = calculateSumOfChar(getDigits(x));
         }
         return sum;
     }
@@ -56,12 +58,9 @@ public class CrossTotal implements Checksum{
      * with which sign to start for this number.
      *
      * @param digits            the digits to work on
-     * @param isAlternating     whether or not to calculate the alternating crosstotal
-     * @param add               <code>true</code> start with an addition
-     *                          <code>false</code> start with a subtraction
      * @return                  the checksum for these digits
      */
-    private int calculateSumOfChar(int[] digits, boolean isAlternating, boolean add) {
+    private int calculateSumOfChar(int[] digits) {
         int sum = 0;
         for(int digit : digits) {
             if(add) {
@@ -82,5 +81,13 @@ public class CrossTotal implements Checksum{
      */
     public int getSum() {
         return sum;
+    }
+
+    public void setIsAlternating(boolean isAlternating) {
+        this.isAlternating = isAlternating;
+    }
+
+    public void setAdd(boolean add) {
+        this.add = add;
     }
 }
