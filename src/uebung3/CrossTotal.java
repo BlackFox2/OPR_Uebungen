@@ -8,7 +8,7 @@ package uebung3;
  */
 public class CrossTotal implements Checksum{
 
-    private int checksum = 0;
+    private int sum = 0;
     /**
      * Takes a string as input and calculates the checksum. In order to calculate the checksum the char representation
      * of every letter is taken and aggregated
@@ -20,9 +20,9 @@ public class CrossTotal implements Checksum{
     public int checksum(String input) {
         byte[] bytes = input.getBytes();
         for(byte x : bytes) {
-            checksum = calculateSumOfChar(getDigits(x), false, true);
+            sum = calculateSumOfChar(getDigits(x), false, true);
         }
-        return checksum;
+        return sum;
     }
 
     /**
@@ -76,4 +76,11 @@ public class CrossTotal implements Checksum{
         return sum;
     }
 
+    /**
+     * Getter for the int variable sum
+     * @return  sum
+     */
+    public int getSum() {
+        return sum;
+    }
 }
