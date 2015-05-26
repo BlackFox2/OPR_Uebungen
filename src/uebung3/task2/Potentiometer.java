@@ -1,24 +1,41 @@
 package uebung3.task2;
 
 /**
- * This class implements a simple resistor.
+ * This class implements a simple potentiometer.
  *
  * @author Markus Marihart
  * @version 1.0
  */
-public class Resistor implements Circuit {
+public class Potentiometer implements Circuit {
+
     private double ohm;
+    private double max;
 
     /**
-     * Initialization of the restistance. Value has to be >= 0
-     * @param ohm   resistance
+     * Initialisation of the maximum value for the resistance
+     * @param max   double > 0
      */
-    public Resistor(double ohm) {
+    public Potentiometer(double max) {
+        if(max < 0) {
+            this.max = 0;
+        } else {
+            this.max = max;
+        }
+    }
+
+    /**
+     * Let's you change the resistance from the potentiometer.
+     * @param ohm   double > 0
+     */
+    public void setOhm(double ohm) {
         if(ohm < 0) {
             this.ohm = 0;
+        }else if(ohm > max) {
+            this.ohm = max;
         } else {
             this.ohm = ohm;
         }
+
     }
 
     /**

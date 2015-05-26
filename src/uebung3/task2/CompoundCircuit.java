@@ -1,15 +1,24 @@
 package uebung3.task2;
 
+
 /**
- * Created by @author
+ * This class makes it possible to build complex circuits. The class is abstract so you cannot create an object of it.
+ *
+ * @author Markus Marihart
+ * @version 1.0
  */
-public class CompoundCircuit {
+public abstract class CompoundCircuit implements Circuit{
 
     Circuit c1;
     Circuit c2;
 
-    public CompoundCircuit(Circuit c1, Circuit c2) {
-        this.c1 = c1;
-        this.c2 = c2;
+    /**
+     * Returns the number of resistors in the circuit
+     *
+     * @return counter of resistors
+     */
+    @Override
+    public int numberOfResistors() {
+        return c1.numberOfResistors() + c2.numberOfResistors();
     }
 }
