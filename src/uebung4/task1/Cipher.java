@@ -1,4 +1,4 @@
-package uebung4;
+package uebung4.task1;
 
 /**
  * This interface has methods for encryption and decryption.
