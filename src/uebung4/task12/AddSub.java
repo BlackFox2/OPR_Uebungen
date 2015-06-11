@@ -1,23 +1,20 @@
-package uebung4.task1;
-
-import uebung3.task2.Circuit;
+package uebung4.task12;
 
 /**
- * This class represents a serial circuit of 2 parts. These parts can be objects implementing the Circuit-Interface.
- *
- * @see Cipher
+ * This class implements the additive substition algorithm for encryption. The algorithm is applied to a given array
+ * of bytes.
  *
  * @author Markus Marihart
  * @version 1.0
  */
-public class XorSub implements Cipher {
+public class AddSub implements Cipher {
     /**
-     * Encrypts the given plainbytes with Xor-Substitution algorithm. The given key is used to XOR the plainbytes
+     * @see Cipher
+     * Uses the additive substitution algorithm for the encryption process.
      *
      * @param plainbytes bytes to encrypt
-     * @param key        key to use for encryption, must be != 0
-     * @return           the encrypted bytes on success
-     *                   null on failure;
+     * @param key        key to use for encryption
+     * @return the encrypted bytes
      */
     @Override
     public byte[] encrypt(byte[] plainbytes, int key) {
@@ -30,19 +27,19 @@ public class XorSub implements Cipher {
             return null;
         }
         byte[] cipher = new byte[plainbytes.length];
-        for(int  i = 0; i < plainbytes.length; i++) {
-            cipher[i] = (byte) (plainbytes[i] ^ key);
+        for(int i = 0; i < plainbytes.length; i++) {
+            cipher[i] = (byte) (plainbytes[i] + key);
         }
         return cipher;
     }
 
     /**
-     * Decrypts the given bytes with the provided key.
+     * @see Cipher
+     * Uses the additive substitution algorithm for the cdecryption process.
      *
      * @param cryptbytes bytes to decrypt
-     * @param key        key to use for decryption, must be != 0
-     * @return           the decrypted bytes on success
-     *                   null on failure
+     * @param key        key to use for decryption
+     * @return the decrypted bytes/plaintext
      */
     @Override
     public byte[] decrypt(byte[] cryptbytes, int key) {
@@ -54,9 +51,9 @@ public class XorSub implements Cipher {
             System.out.println("Error: Encryption with key 0 is not an encryption! So you should already have the plaintext");
             return null;
         }
-        byte plain[] = new byte[cryptbytes.length];
+        byte[] plain = new byte[cryptbytes.length];
         for(int i = 0; i < cryptbytes.length; i++) {
-            plain[i] = (byte) (cryptbytes[i] ^ key);
+            plain[i] = (byte) (cryptbytes[i] - key);
         }
         return plain;
     }

@@ -1,4 +1,4 @@
-package uebung4.task1;
+package uebung4.task12;
 
 import java.util.Random;
 
