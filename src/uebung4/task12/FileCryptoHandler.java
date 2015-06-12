@@ -72,7 +72,6 @@ public abstract class FileCryptoHandler {
             return;
         }
         try {
-            //out.write(cipher.decrypt(input, key));
             out.write(doCrypto(input));
         } catch (IOException e) {
             System.out.println("Error: Not able to write to output file!");
