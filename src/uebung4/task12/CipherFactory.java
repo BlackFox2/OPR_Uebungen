@@ -7,7 +7,7 @@ package uebung4.task12;
  * @version 1.0
  */
 public class CipherFactory {
-
+    public static final String defaultCipher = "AdditiveSubstitution";
     /**
      * Creates and returns an object of the given algorithm name.
      *
@@ -21,7 +21,7 @@ public class CipherFactory {
                 return new XorSub();
             case "StreamCipher":
                 return new StreamCipher();
-            case "AdditiveSubstition":
+            case "AdditiveSubstitution":
                 return new AddSub();
             default:
                 throw new IllegalArgumentException(name + " is not a valid algorithm!");
