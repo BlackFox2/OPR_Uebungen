@@ -37,10 +37,8 @@ public class FileDecrypter {
      * Only .enc files are allowed for decryption. Given another file the method will do nothing at all.
      *
      * @param inputPath     Path to file with .enc extension
-     * @throws FileNotFoundException    when path provided is not an existing file
-     * @throws IOException              in case the file cannot be read or the output file cannot be written
      */
-    public void decrypt(final String inputPath) throws  FileNotFoundException, IOException{
+    public void decrypt(final String inputPath) {
         String ext = "";
         int i  = inputPath.lastIndexOf('.');
         if(i > 0) {
@@ -49,16 +47,37 @@ public class FileDecrypter {
         if(ext.equals("enc")) {
             File f = new File(inputPath);
             if (!f.exists()) {
-                throw new FileNotFoundException("Error: File not found.");
+                System.out.println("Error: File does not exist!");
+                return;
             }
-            FileInputStream in = new FileInputStream(f);
+            FileInputStream in;
+            try {
+                in = new FileInputStream(f);
+            } catch (FileNotFoundException e) {
+                System.out.println("Error: File does not exist!");
+                return;
+            }
             byte input[] = new byte[(int)f.length()];
             ext = ext.replace("enc", decExt);
             String newPath = inputPath.substring(0, i);
             newPath += ext;
-            FileOutputStream out = new FileOutputStream(newPath);
-            in.read(input);
-            out.write(cipher.decrypt(input, key));
+            FileOutputStream out;
+            try {
+                out = new FileOutputStream(newPath);
+                in.read(input);
+            } catch (FileNotFoundException e) {
+                System.out.println("Error: Not able to create output file!");
+                return;
+            } catch (IOException e) {
+                System.out.println("Error: Not able to read input file!");
+                return;
+            }
+            try {
+                out.write(cipher.decrypt(input, key));
+            } catch (IOException e) {
+                System.out.println("Error: Not able to write to output file!");
+                return;
+            }
         }
     }
 }
