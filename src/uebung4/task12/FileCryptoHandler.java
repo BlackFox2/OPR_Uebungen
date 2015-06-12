@@ -26,31 +26,40 @@ public abstract class FileCryptoHandler {
      *
      * @param inputPath     Path to file with .txt/.enc extension
      */
-    protected void fileHandling(final String inputPath) {
+    protected void pathHandling(final String inputPath) {
+        File f = new File(inputPath);
+        if (!f.exists()) {
+            System.out.println("Error: File/Directory does not exist!");
+            return;
+        }
+        if(f.isDirectory()) {
+            handleDirectory(f);
+        } else {
+            handleFile(f);
+        }
+    }
+
+    protected void handleFile(File f) {
         String ext = "";
+        String newPath = "";
+        String inputPath = f.getAbsolutePath();
         int i  = inputPath.lastIndexOf('.');
         if(i > 0) {
             ext = inputPath.substring(i+1);
-        }
-        String newPath;
-        switch (ext) {
-            case encExt:     //do decryption
-                ext = ext.replace(encExt, decExt);
-                newPath = inputPath.substring(0, i);
-                newPath += ext;
-                break;
-            case plainExt:    //do encryption
-                ext = ext.replace(plainExt, encExt);
-                newPath = inputPath.substring(0, i);
-                newPath += ext;
-                break;
-            default:
-                return;
-        }
-        File f = new File(inputPath);
-        if (!f.exists()) {
-            System.out.println("Error: File does not exist!");
-            return;
+            switch (ext) {
+                case encExt:     //do decryption
+                    ext = ext.replace(encExt, decExt);
+                    newPath = inputPath.substring(0, i);
+                    newPath += ext;
+                    break;
+                case plainExt:    //do encryption
+                    ext = ext.replace(plainExt, encExt);
+                    newPath = inputPath.substring(0, i);
+                    newPath += ext;
+                    break;
+                default:
+                    return;
+            }
         }
         FileInputStream in;
         try {
@@ -77,7 +86,14 @@ public abstract class FileCryptoHandler {
             System.out.println("Error: Not able to write to output file!");
             return;
         }
+    }
 
+    protected void handleDirectory(File d) {
+        for(final File fileEntry : d.listFiles()) {
+            if(fileEntry.isFile()) {
+                handleFile(fileEntry);
+            }
+        }
     }
 
     /**
