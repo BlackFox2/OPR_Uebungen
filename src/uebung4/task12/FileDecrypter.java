@@ -39,7 +39,7 @@ public class FileDecrypter extends FileCryptoHandler{
      * @param inputPath     Path to file with .enc extension
      */
     public void decrypt(final String inputPath) {
-        fileHandling(inputPath);
+        pathHandling(inputPath);
     }
 
     /**

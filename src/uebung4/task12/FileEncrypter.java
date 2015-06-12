@@ -40,7 +40,7 @@ public class FileEncrypter extends FileCryptoHandler {
      * @param inputPath     Path to file with .txt extension
      */
     public void encrypt(final String inputPath) {
-        fileHandling(inputPath);
+        pathHandling(inputPath);
     }
 
     /**
