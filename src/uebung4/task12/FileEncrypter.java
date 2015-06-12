@@ -8,11 +8,10 @@ import java.io.*;
  * @author Markus Marihart
  * @version 1.0
  */
-public class FileEncrypter {
+public class FileEncrypter extends FileCryptoHandler {
 
     private int key;
     private Cipher cipher;
-    private final String encExt = "enc";
 
     /**
      * Create an object of this class and use the given encryption method.
@@ -29,8 +28,7 @@ public class FileEncrypter {
      * @param key   key with which will be encrypted
      */
     public FileEncrypter(int key) {
-        this.key = key;
-        this.cipher = CipherFactory.getInstance();
+        this(key, CipherFactory.defaultCipher);
     }
 
 
@@ -40,27 +38,16 @@ public class FileEncrypter {
      * Only .txt files are allowed for encryption. Given another file the method will do nothing at all.
      *
      * @param inputPath     Path to file with .txt extension
-     * @throws FileNotFoundException    when path provided is not an existing file
-     * @throws IOException              in case the file cannot be read or the output file cannot be written
      */
-    public void encrypt(final String inputPath) throws FileNotFoundException, IOException {
-        String ext = "";
-        int i  = inputPath.lastIndexOf('.');
-        if(i > 0) {
-            ext = inputPath.substring(i+1);
-        }
-        if(ext.equals("txt")) {
-            File f = new File(inputPath);
-            if (!f.exists()) {
-                throw new FileNotFoundException("Error: File not found.");
-            }
-            FileInputStream in = new FileInputStream(f);
-            byte input[] = new byte[(int)f.length()];
-            String newPath = inputPath.replace("txt", encExt);
-            FileOutputStream out = new FileOutputStream(newPath);
-            in.read(input);
-            out.write(cipher.encrypt(input, key));
+    public void encrypt(final String inputPath) {
+        fileHandling(inputPath);
+    }
 
-        }
+    /**
+     * @see FileCryptoHandler
+     */
+    @Override
+    protected byte[] doCrypto(byte[] input) {
+        return cipher.encrypt(input, key);
     }
 }
