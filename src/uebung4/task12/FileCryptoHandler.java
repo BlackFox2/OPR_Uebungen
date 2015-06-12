@@ -26,23 +26,26 @@ public abstract class FileCryptoHandler {
      *
      * @param inputPath     Path to file with .txt/.enc extension
      */
-    private void fileHandling(final String inputPath) {
+    protected void fileHandling(final String inputPath) {
         String ext = "";
         int i  = inputPath.lastIndexOf('.');
         if(i > 0) {
             ext = inputPath.substring(i+1);
         }
         String newPath;
-        if(ext.equals(encExt)) {    //do decryption
-            ext = ext.replace(encExt, decExt);
-            newPath = inputPath.substring(0, i);
-            newPath += ext;
-        } else if(ext.equals(plainExt)) {   //do encryption
-            ext = ext.replace(plainExt, encExt);
-            newPath = inputPath.substring(0, i);
-            newPath += ext;
-        } else {
-            return;
+        switch (ext) {
+            case encExt:     //do decryption
+                ext = ext.replace(encExt, decExt);
+                newPath = inputPath.substring(0, i);
+                newPath += ext;
+                break;
+            case plainExt:    //do encryption
+                ext = ext.replace(plainExt, encExt);
+                newPath = inputPath.substring(0, i);
+                newPath += ext;
+                break;
+            default:
+                return;
         }
         File f = new File(inputPath);
         if (!f.exists()) {
@@ -78,7 +81,10 @@ public abstract class FileCryptoHandler {
 
     }
 
-    public abstract byte[] doCrypto(byte[] input);
-    //public abstract void doDecryption();
-
+    /**
+     * Execute the cryptographic task on the bytes given.
+     * @param input bytes
+     * @return      the bytes with applied crypto
+     */
+    protected abstract byte[] doCrypto(byte[] input);
 }
