@@ -11,10 +11,11 @@ public class Resistor implements Circuit {
 
     /**
      * Initialization of the restistance. Value has to be >= 0
-     * @param ohm   resistance
+     *
+     * @param ohm resistance
      */
     public Resistor(double ohm) {
-        if(ohm < 0) {
+        if (ohm < 0) {
             this.ohm = 0;
         } else {
             this.ohm = ohm;

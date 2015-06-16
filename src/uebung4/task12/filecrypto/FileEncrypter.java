@@ -1,6 +1,7 @@
-package uebung4.task12;
+package uebung4.task12.filecrypto;
 
-import java.io.*;
+import uebung4.task12.ciphertools.Cipher;
+import uebung4.task12.ciphertools.CipherFactory;
 
 /**
  * This class handles the encryption of a file.
@@ -10,13 +11,14 @@ import java.io.*;
  */
 public class FileEncrypter extends FileCryptoHandler {
 
-    private int key;
-    private Cipher cipher;
+    private final String validExtension = "txt";
+    private final String newExtension = "enc";
 
     /**
      * Create an object of this class and use the given encryption method.
-     * @param key       key with which will be encrypted
-     * @param cipher    encryption method
+     *
+     * @param key    key with which will be encrypted
+     * @param cipher encryption method
      */
     public FileEncrypter(int key, String cipher) {
         this.key = key;
@@ -25,7 +27,8 @@ public class FileEncrypter extends FileCryptoHandler {
 
     /**
      * Create an object of this class and use the default encryption method.
-     * @param key   key with which will be encrypted
+     *
+     * @param key key with which will be encrypted
      */
     public FileEncrypter(int key) {
         this(key, CipherFactory.defaultCipher);
@@ -37,9 +40,9 @@ public class FileEncrypter extends FileCryptoHandler {
      * name just with .enc extension.
      * Only .txt files are allowed for encryption. Given another file the method will do nothing at all.
      *
-     * @param inputPath     Path to file with .txt extension
+     * @param inputPath Path to file with .txt extension
      */
-    public void encrypt(final String inputPath) {
+    public void encrypt(final String inputPath) throws IllegalArgumentException{
         pathHandling(inputPath);
     }
 
@@ -49,5 +52,19 @@ public class FileEncrypter extends FileCryptoHandler {
     @Override
     protected byte[] doCrypto(byte[] input) {
         return cipher.encrypt(input, key);
+    }
+
+    /**
+     * @see FileCryptoHandler
+     */
+    protected String getValidExtension() {
+        return validExtension;
+    }
+
+    /**
+     * @see FileCryptoHandler
+     */
+    protected String getNewExtension() {
+        return newExtension;
     }
 }

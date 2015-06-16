@@ -14,6 +14,7 @@ public class NewtonRootTest {
 
     /**
      * Checks the squareRoot function from uebung1.NewtonRoot class with different inputs.
+     *
      * @throws Exception
      */
     @Test
@@ -40,6 +41,7 @@ public class NewtonRootTest {
 
     /**
      * Checks the cubicRoot function from uebung1.NewtonRoot class with different inputs.
+     *
      * @throws Exception
      */
     @Test
@@ -48,7 +50,7 @@ public class NewtonRootTest {
         double result;
         NewtonRoot nR = new NewtonRoot();
         result = nR.cubicRoot(n);
-        assertEquals(Math.cbrt(n),result, 0.000001);
+        assertEquals(Math.cbrt(n), result, 0.000001);
 
         n = 0.5;
         result = nR.cubicRoot(n);

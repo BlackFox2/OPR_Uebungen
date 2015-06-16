@@ -17,11 +17,11 @@ public class ArrayList implements List, Sortable, Deque {
      * <p>
      * The element is inserted at the end of the list.
      *
-     * @param element   the element which should be added to the list.
+     * @param element the element which should be added to the list.
      */
     @Override
     public void add(Node element) {
-        if(counter == elements.length) {
+        if (counter == elements.length) {
             elements = doubleArraySize(elements, 0);
         }
         elements[counter] = element;
@@ -39,11 +39,11 @@ public class ArrayList implements List, Sortable, Deque {
     @Override
     public void remove(int key) {
         int max = counter;                  /* save how many elements there are in the list for later*/
-        int lastIndex = counter-1;
+        int lastIndex = counter - 1;
         /* we search from end to beginning because it's easier to handle if the last elements are removed */
-        for(int i = lastIndex; i > -1; i--) {/* analyse how many elements will be removed and remove them */
-            if(elements[i].getKey() == key) {
-                if(i == lastIndex) {
+        for (int i = lastIndex; i > -1; i--) {/* analyse how many elements will be removed and remove them */
+            if (elements[i].getKey() == key) {
+                if (i == lastIndex) {
                     lastIndex--;            /* when the last item is removed the last index is decreased */
                 }
                 elements[i] = null;
@@ -59,19 +59,19 @@ public class ArrayList implements List, Sortable, Deque {
          * max - (max - (lastIndex+1)) = how many positions there are from the beginning to the end
          * (max - (max - (lastIndex+1))) - counter = number of gaps (under the above assumption)
          * */
-        int gaps = (max-(max-(lastIndex+1)))-counter;
+        int gaps = (max - (max - (lastIndex + 1))) - counter;
         int closed = 0;                     /* how many gaps are closed */
-        for(int i = 0; closed < gaps; i++) {
-            if(elements[i] == null) {       /* beginning of a gap */
-                int y = i+1;
-                while(elements[y] == null) {
+        for (int i = 0; closed < gaps; i++) {
+            if (elements[i] == null) {       /* beginning of a gap */
+                int y = i + 1;
+                while (elements[y] == null) {
                     y++;                    /* the actual gap consists of more than 1 positions */
-                    if(y-i > 1) {
-                        gaps -= (y-i);             /* decrease the amount of gaps */
+                    if (y - i > 1) {
+                        gaps -= (y - i);             /* decrease the amount of gaps */
                     }
                 }
-                for(int x = y; x <= lastIndex; x++) {   /* close the actual gap by moving the elements */
-                    elements[i+(x-y)] = elements[x];
+                for (int x = y; x <= lastIndex; x++) {   /* close the actual gap by moving the elements */
+                    elements[i + (x - y)] = elements[x];
                     elements[x] = null;
                 }
                 closed++;                   /* gap closed */
@@ -89,7 +89,7 @@ public class ArrayList implements List, Sortable, Deque {
 
     /**
      * @return <code>true</code> if there are no elements in the list,
-     *         <code>false</code> otherwise
+     * <code>false</code> otherwise
      */
     @Override
     public boolean isEmpty() {
@@ -106,7 +106,7 @@ public class ArrayList implements List, Sortable, Deque {
      */
     @Override
     public Node get(int index) {
-        if(index >= 0 && index < counter) {
+        if (index >= 0 && index < counter) {
             return elements[index];
         }
         return null;
@@ -117,7 +117,7 @@ public class ArrayList implements List, Sortable, Deque {
      */
     @Override
     public Node getHead() {
-        if(counter != 0) {
+        if (counter != 0) {
             return elements[0];
         }
         return null;
@@ -128,8 +128,8 @@ public class ArrayList implements List, Sortable, Deque {
      */
     @Override
     public Node getTail() {
-        if(counter != 0) {
-            return elements[counter-1];
+        if (counter != 0) {
+            return elements[counter - 1];
         }
         return null;
     }
@@ -139,7 +139,7 @@ public class ArrayList implements List, Sortable, Deque {
      */
     @Override
     public void clear() {
-        for(int i = 0; i < counter-1; i++) {
+        for (int i = 0; i < counter - 1; i++) {
             elements[i] = null;
         }
         counter = 0;
@@ -153,13 +153,13 @@ public class ArrayList implements List, Sortable, Deque {
         int j;
         boolean flag = true;
         Node temp;
-        while(flag) {
+        while (flag) {
             flag = false;
-            for(j = 0; j < counter-1; j++) {
-                if(elements[j].getKey() > elements[j+1].getKey()) {
+            for (j = 0; j < counter - 1; j++) {
+                if (elements[j].getKey() > elements[j + 1].getKey()) {
                     temp = elements[j];
-                    elements[j] = elements[j+1];
-                    elements[j+1] = temp;
+                    elements[j] = elements[j + 1];
+                    elements[j + 1] = temp;
                     flag = true;
                 }
             }
@@ -174,13 +174,13 @@ public class ArrayList implements List, Sortable, Deque {
         int j;
         boolean flag = true;
         Node temp;
-        while(flag) {
+        while (flag) {
             flag = false;
-            for(j = 0; j < counter-1; j++) {
-                if(elements[j].getKey() < elements[j+1].getKey()) {
+            for (j = 0; j < counter - 1; j++) {
+                if (elements[j].getKey() < elements[j + 1].getKey()) {
                     temp = elements[j];
-                    elements[j] = elements[j+1];
-                    elements[j+1] = temp;
+                    elements[j] = elements[j + 1];
+                    elements[j + 1] = temp;
                     flag = true;
                 }
             }
@@ -191,27 +191,28 @@ public class ArrayList implements List, Sortable, Deque {
      * Doubles the size of the array.
      * Values from the original array are copied into the new one including the possibility to copy it with an offset.
      *
-     * @param array     array to double
-     * @param offset    where to copy the nodes of the old array to the new one
-     * @return          the new array
+     * @param array  array to double
+     * @param offset where to copy the nodes of the old array to the new one
+     * @return the new array
      */
     private Node[] doubleArraySize(Node[] array, int offset) {
-        Node[] res = new Node[array.length*2];
+        Node[] res = new Node[array.length * 2];
         System.arraycopy(array, 0, res, offset, array.length);
         return res;
     }
 
     /**
      * Adds a node to the beginning of the list.
-     * @param e     node to add to the beginning
+     *
+     * @param e node to add to the beginning
      */
     @Override
     public void addHead(Node e) {
         Node[] helper = elements;
-        if(counter+1 >= elements.length) {      /* check if there's enough space left for the new node */
+        if (counter + 1 >= elements.length) {      /* check if there's enough space left for the new node */
             elements = doubleArraySize(helper, 1);
         } else {
-            System.arraycopy(helper, 0, elements, 1, helper.length-1);
+            System.arraycopy(helper, 0, elements, 1, helper.length - 1);
         }
         elements[0] = e;
         counter++;
@@ -219,7 +220,8 @@ public class ArrayList implements List, Sortable, Deque {
 
     /**
      * Adds a node at the end of the list.
-     * @param e     node to add at the end
+     *
+     * @param e node to add at the end
      */
     @Override
     public void addTail(Node e) {
@@ -239,16 +241,17 @@ public class ArrayList implements List, Sortable, Deque {
      */
     @Override
     public void removeTail() {
-        remove(elements[counter-1].getKey());
+        remove(elements[counter - 1].getKey());
     }
 
     /**
      * Calls the toString method of every element in the list and connects the results together
-     * @return      string with all returns of toString methods
+     *
+     * @return string with all returns of toString methods
      */
     public String toString() {
         String res = "";
-        for(int i = 0; i < counter; i++) {
+        for (int i = 0; i < counter; i++) {
             res += elements[i].toString();
         }
         return res;

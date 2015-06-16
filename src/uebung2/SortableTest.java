@@ -15,6 +15,7 @@ public class SortableTest {
 
     /**
      * Checks the sortAscending function from uebung2.ArrayList class.
+     *
      * @throws Exception
      */
     @Test
@@ -30,14 +31,15 @@ public class SortableTest {
         list.add(n1);
         list.add(n2);
         list.sortAscending();
-        for(int i = 0; i < 5; i++) {
-            assertEquals(i+1, list.get(i).getKey(), 0.0);
+        for (int i = 0; i < 5; i++) {
+            assertEquals(i + 1, list.get(i).getKey(), 0.0);
         }
 
     }
 
     /**
      * Checks the sortDescending function from uebung2.ArrayList class.
+     *
      * @throws Exception
      */
     @Test
@@ -53,8 +55,8 @@ public class SortableTest {
         list.add(n1);
         list.add(n2);
         list.sortDescending();
-        for(int i = 0; i < 5; i++) {
-            assertEquals(5-i, list.get(i).getKey(), 0.0);
+        for (int i = 0; i < 5; i++) {
+            assertEquals(5 - i, list.get(i).getKey(), 0.0);
         }
 
     }

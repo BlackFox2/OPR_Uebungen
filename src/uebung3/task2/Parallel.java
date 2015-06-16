@@ -10,8 +10,9 @@ public class Parallel extends CompoundCircuit {
 
     /**
      * Initialization of the parallel circuit.
-     * @param c1    object implementing Circuit Interface, not null
-     * @param c2    object implementing Circuit Interface, not null
+     *
+     * @param c1 object implementing Circuit Interface, not null
+     * @param c2 object implementing Circuit Interface, not null
      */
     public Parallel(Circuit c1, Circuit c2) {
         this.c1 = c1;
@@ -25,9 +26,9 @@ public class Parallel extends CompoundCircuit {
      */
     @Override
     public double getOhm() {
-        if(c1.getOhm() == 0 || c2.getOhm() == 0) {
+        if (c1.getOhm() == 0 || c2.getOhm() == 0) {
             return 0;
         }
-        return 1/(1/c1.getOhm()+1/c2.getOhm());
+        return 1 / (1 / c1.getOhm() + 1 / c2.getOhm());
     }
 }

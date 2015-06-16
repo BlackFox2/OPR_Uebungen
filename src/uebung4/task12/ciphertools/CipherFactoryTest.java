@@ -1,4 +1,4 @@
-package uebung4.task12;
+package uebung4.task12.ciphertools;
 
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class CipherFactoryTest {
     @Test(expected = IllegalArgumentException.class)
     public void testGetInstance() throws Exception {
         Cipher as = CipherFactory.getInstance("AdditiveSubstitution");
-        assertTrue(as instanceof  AddSub);
+        assertTrue(as instanceof AddSub);
         Cipher xs = CipherFactory.getInstance("XORSubstitution");
         assertTrue(xs instanceof XorSub);
         Cipher sc = CipherFactory.getInstance("StreamCipher");

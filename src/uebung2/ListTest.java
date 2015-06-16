@@ -3,6 +3,7 @@ package uebung2;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+
 /**
  * JUnitTest for testing the uebung2.ArrayList class the base functionality and additionally the functionality needed
  * from implementing uebung2.List
@@ -18,10 +19,11 @@ public class ListTest {
     /**
      * Insert the given amount of nodes into the list.
      * Key of the nodes is increasing from zero to n
-     * @param n     amount of nodes to insert
+     *
+     * @param n amount of nodes to insert
      */
     private void insertNodes(int n) {
-        for(int i = 0; i < n+1; i++) {
+        for (int i = 0; i < n + 1; i++) {
             NodeImpl x = new NodeImpl(i);
             list.add(x);
         }
@@ -29,6 +31,7 @@ public class ListTest {
 
     /**
      * Checks the add function from uebung2.ArrayList class with different amounts of nodes.
+     *
      * @throws Exception
      */
     @Test
@@ -36,24 +39,25 @@ public class ListTest {
         n = new NodeImpl(counter);
         list.add(n);
         /* check the inserted element */
-        assertTrue(n == list.elements[counter-1]);
+        assertTrue(n == list.elements[counter - 1]);
         /* generate more elements and check their insertion */
-        for(counter += 1; counter < 5; counter++) {
+        for (counter += 1; counter < 5; counter++) {
             NodeImpl testNode = new NodeImpl(counter);
             list.add(testNode);
-            assertTrue(testNode == list.elements[counter-1]);
+            assertTrue(testNode == list.elements[counter - 1]);
         }
         /* check if the size of the array is increased when the fifth element is added */
         int listSize = list.elements.length;
-        NodeImpl n2  = new NodeImpl(counter);
+        NodeImpl n2 = new NodeImpl(counter);
         list.add(n2);
         assertTrue(n2 == list.elements[counter - 1]);
-        assertEquals(listSize*2, list.elements.length, 0.0);
+        assertEquals(listSize * 2, list.elements.length, 0.0);
 
     }
 
     /**
      * Checks the remove function from uebung2.ArrayList class with different amounts of nodes and orders.
+     *
      * @throws Exception
      */
     @Test
@@ -61,7 +65,7 @@ public class ListTest {
         // Test if it's possible to remove the first element and the list fills the hole automatically.
         n = new NodeImpl(counter);
         list.add(n);
-        for(counter += 1; counter < 6; counter++) {
+        for (counter += 1; counter < 6; counter++) {
             NodeImpl testNode = new NodeImpl(counter);
             list.add(testNode);
         }
@@ -70,8 +74,8 @@ public class ListTest {
         assertFalse(list.elements[0] == n);
         counter--;
         boolean holes = false;
-        for(int i = 0; i < counter; i++) {
-            if(list.elements[i] == null) {
+        for (int i = 0; i < counter; i++) {
+            if (list.elements[i] == null) {
                 holes = true;
             }
         }
@@ -132,29 +136,31 @@ public class ListTest {
         assertFalse(sameKeyOne == list.elements[indexOne]);
         assertFalse(sameKeyTwo == list.elements[indexTwo]);
         assertTrue(between == list.elements[indexOne]);
-        assertTrue(afterKeys == list.elements[indexOne+1]);
+        assertTrue(afterKeys == list.elements[indexOne + 1]);
         counter -= 2;
     }
 
     /**
      * Checks the size function from uebung2.ArrayList class.
+     *
      * @throws Exception
      */
     @Test
     public void testSize() throws Exception {
-        for(int i = 0; i < 20; i++) {
+        for (int i = 0; i < 20; i++) {
             NodeImpl n = new NodeImpl(i);
             list.add(n);
-            assertEquals(i+1, list.size(),0.0);
+            assertEquals(i + 1, list.size(), 0.0);
         }
-        for(int i = 19; i > -1; i--) {
+        for (int i = 19; i > -1; i--) {
             list.remove(i);
-            assertEquals(i, list.size(),0.0);
+            assertEquals(i, list.size(), 0.0);
         }
     }
 
     /**
      * Checks the isEmpty function from uebung2.ArrayList class.
+     *
      * @throws Exception
      */
     @Test
@@ -167,6 +173,7 @@ public class ListTest {
 
     /**
      * Checks the get function from uebung2.ArrayList class with different amount of nodes.
+     *
      * @throws Exception
      */
     @Test
@@ -182,6 +189,7 @@ public class ListTest {
 
     /**
      * Checks the getHead function from uebung2.ArrayList class.
+     *
      * @throws Exception
      */
     @Test
@@ -195,11 +203,12 @@ public class ListTest {
 
     /**
      * Checks the getTail function from uebung2.ArrayList class.
+     *
      * @throws Exception
      */
     @Test
     public void testGetTail() throws Exception {
-       insertNodes(5);
+        insertNodes(5);
         NodeImpl tail = new NodeImpl(6);
         list.add(tail);
         Node test = list.getTail();
@@ -209,6 +218,7 @@ public class ListTest {
 
     /**
      * Checks the clear function from uebung2.ArrayList class.
+     *
      * @throws Exception
      */
     @Test
@@ -220,6 +230,7 @@ public class ListTest {
 
     /**
      * Checks the toString function from uebung2.ArrayList class.
+     *
      * @throws Exception
      */
     @Test

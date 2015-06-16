@@ -38,8 +38,8 @@ public class PasswordChecker {
     String pw;
 
     /**
-     *  Regex to check if a special character is in the password
-     *  (.) any character; * zero or more times
+     * Regex to check if a special character is in the password
+     * (.) any character; * zero or more times
      */
 
     final String SPECIALREGEX = "(.)*[!\"#$%&'()*+,-./:;<=>?@](.)*";
@@ -93,7 +93,7 @@ public class PasswordChecker {
     /**
      * Check the length of the given password.
      *
-     * @return  Boolean whether or not the password is long enough
+     * @return Boolean whether or not the password is long enough
      */
     private boolean checkLength() {
         return pw.length() >= 8;

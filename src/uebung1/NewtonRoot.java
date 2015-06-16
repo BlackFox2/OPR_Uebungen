@@ -18,11 +18,11 @@ public class NewtonRoot {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         double n;
-        double sRoot , cRoot;
+        double sRoot, cRoot;
         NewtonRoot nR = new NewtonRoot();
         System.out.print("Bitte geben Sie eine Zahl groesser 0 ein: ");
         n = s.nextDouble();
-        if(!(n > 0.0)) {
+        if (!(n > 0.0)) {
             System.out.println("Die Zahl muss groesser 0 sein!");
             System.exit(-1);
         }
@@ -45,9 +45,9 @@ public class NewtonRoot {
         double act_diff;                                    //actual deviation
 
         do {
-            act_diff = Math.abs(n-q*q);                     //update the actual deviation
-            q = (q+(n/q))/2;                                //calculate new q value
-        } while(act_diff > target_diff);
+            act_diff = Math.abs(n - q * q);                     //update the actual deviation
+            q = (q + (n / q)) / 2;                                //calculate new q value
+        } while (act_diff > target_diff);
 
         return q;
     }
@@ -64,9 +64,9 @@ public class NewtonRoot {
         double q = 1.0;
         double act_diff;                                    //actual deviation
         do {
-            act_diff = Math.abs(n-q*q*q);                   //update the actual deviation
-            q = (2*q+n/(q*q))/3;                            //calculate new q value
-        } while(act_diff > target_diff);
+            act_diff = Math.abs(n - q * q * q);                   //update the actual deviation
+            q = (2 * q + n / (q * q)) / 3;                            //calculate new q value
+        } while (act_diff > target_diff);
         return q;
     }
 

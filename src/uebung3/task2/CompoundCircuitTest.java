@@ -14,6 +14,7 @@ public class CompoundCircuitTest {
 
     /**
      * Short test whether or not the function works
+     *
      * @throws Exception
      */
     @Test
@@ -26,6 +27,7 @@ public class CompoundCircuitTest {
 
     /**
      * Tests more complex circuits. The circuits are given in the paper.
+     *
      * @throws Exception
      */
     @Test

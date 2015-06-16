@@ -1,6 +1,7 @@
-package uebung4.task12;
+package uebung4.task12.filecrypto;
 
-import java.io.*;
+import uebung4.task12.ciphertools.Cipher;
+import uebung4.task12.ciphertools.CipherFactory;
 
 /**
  * This class handles the decryption of a file.
@@ -8,15 +9,16 @@ import java.io.*;
  * @author Markus Marihart
  * @version 1.0
  */
-public class FileDecrypter extends FileCryptoHandler{
-    private int key;
-    private final String decExt = "dec";
-    private Cipher cipher;
+public class FileDecrypter extends FileCryptoHandler {
+
+    private final String validExtension = "txt";
+    private final String newExtension = "enc";
 
     /**
      * Create an object with the given dedryption method
-     * @param key       key with which the decryption works
-     * @param cipher    decryption method
+     *
+     * @param key    key with which the decryption works
+     * @param cipher decryption method
      */
     public FileDecrypter(int key, String cipher) {
         this.key = key;
@@ -25,7 +27,8 @@ public class FileDecrypter extends FileCryptoHandler{
 
     /**
      * Create an object with the default decryption method
-     * @param key   key with which the decryption works
+     *
+     * @param key key with which the decryption works
      */
     public FileDecrypter(int key) {
         this(key, CipherFactory.defaultCipher);
@@ -36,9 +39,9 @@ public class FileDecrypter extends FileCryptoHandler{
      * name just with .dec extension.
      * Only .enc files are allowed for decryption. Given another file the method will do nothing at all.
      *
-     * @param inputPath     Path to file with .enc extension
+     * @param inputPath Path to file with .enc extension
      */
-    public void decrypt(final String inputPath) {
+    public void decrypt(final String inputPath) throws IllegalArgumentException {
         pathHandling(inputPath);
     }
 
@@ -48,5 +51,21 @@ public class FileDecrypter extends FileCryptoHandler{
     @Override
     protected byte[] doCrypto(byte[] input) {
         return cipher.decrypt(input, key);
+    }
+
+    /**
+     * @see FileCryptoHandler
+     */
+    @Override
+    protected String getValidExtension() {
+        return validExtension;
+    }
+
+    /**
+     * @see FileCryptoHandler
+     */
+    @Override
+    protected String getNewExtension() {
+        return newExtension;
     }
 }

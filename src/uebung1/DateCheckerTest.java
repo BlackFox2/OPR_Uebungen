@@ -14,6 +14,7 @@ public class DateCheckerTest {
 
     /**
      * Checks the testCheckDate function from uebung1.DateChecker class with different inputs.
+     *
      * @throws Exception
      */
     @Test

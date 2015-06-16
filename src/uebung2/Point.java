@@ -15,8 +15,9 @@ public class Point {
 
     /**
      * Constructor. Simply sets the variables
-     * @param x     x coordinate
-     * @param y     y coordinate
+     *
+     * @param x x coordinate
+     * @param y y coordinate
      */
     Point(double x, double y) {
         this.x = x;
@@ -25,7 +26,8 @@ public class Point {
 
     /**
      * Returns the x coordinate from the point.
-     * @return  x coordinate
+     *
+     * @return x coordinate
      */
     public double getX() {
         return x;
@@ -33,7 +35,8 @@ public class Point {
 
     /**
      * Returns the y coordinate from the point.
-     * @return  y coordinate
+     *
+     * @return y coordinate
      */
     public double getY() {
         return y;
@@ -41,12 +44,13 @@ public class Point {
 
     /**
      * Returns the distance between the 2 points
+     *
      * @param p Point to calculate distance
-     * @return  distance on success
-     *          0.0 on failure
+     * @return distance on success
+     * 0.0 on failure
      */
     double distance(Point p) {
-        if(p == null) {
+        if (p == null) {
             return 0.0;
         }
         return Math.hypot(this.x - p.getX(), this.y - p.getY());
@@ -54,16 +58,17 @@ public class Point {
 
     /**
      * Returns whether or not two points are the same within a given range regarding their x and y coordinates.
-     * @param p         Point object to compare with
-     * @param within    delta
-     * @return          true if points have the same x and y coordinates within the delta
-     *                  else false
+     *
+     * @param p      Point object to compare with
+     * @param within delta
+     * @return true if points have the same x and y coordinates within the delta
+     * else false
      */
     boolean isSame(Point p, double within) {
-        if(this.x > p.getX()+within || this.x < p.getX()-within) {
+        if (this.x > p.getX() + within || this.x < p.getX() - within) {
             return false;
         }
-        if(this.y > p.getY()+within || this.y < p.getY()-within) {
+        if (this.y > p.getY() + within || this.y < p.getY() - within) {
             return false;
         }
         return true;
@@ -71,13 +76,14 @@ public class Point {
 
     /**
      * Returns a new Point object. The coordinates of the new object are altered according to the given values.
-     * @param x     value to change x coordinate
-     * @param y     value to change y coordinate
-     * @return      Point object on success
-     *              null on failure
+     *
+     * @param x value to change x coordinate
+     * @param y value to change y coordinate
+     * @return Point object on success
+     * null on failure
      */
     Point moved(Double x, Double y) {
-        if(x == null || y == null ) {
+        if (x == null || y == null) {
             return null;
         }
         return new Point(this.x + x, this.y + y);

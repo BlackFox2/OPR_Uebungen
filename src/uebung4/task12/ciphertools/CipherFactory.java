@@ -1,4 +1,4 @@
-package uebung4.task12;
+package uebung4.task12.ciphertools;
 
 /**
  * This class is a factory for encryption algorithms.
@@ -8,12 +8,13 @@ package uebung4.task12;
  */
 public class CipherFactory {
     public static final String defaultCipher = "AdditiveSubstitution";
+
     /**
      * Creates and returns an object of the given algorithm name.
      *
-     * @param name      Encryption algorithm to create object for
-     * @return          Object for the specified algorithm
-     * @throws IllegalArgumentException     when name does not match an available algorithm
+     * @param name Encryption algorithm to create object for
+     * @return Object for the specified algorithm
+     * @throws IllegalArgumentException when name does not match an available algorithm
      */
     public static Cipher getInstance(String name) throws IllegalArgumentException {
         switch (name) {
@@ -30,7 +31,8 @@ public class CipherFactory {
 
     /**
      * Creates and returns an AddSub object.
-     * @return  AddSub object.
+     *
+     * @return AddSub object.
      */
     public static Cipher getInstance() {
         return new AddSub();

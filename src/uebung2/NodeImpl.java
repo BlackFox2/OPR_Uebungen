@@ -6,12 +6,13 @@ package uebung2;
  * @author Markus Marihart
  * @version 1.0
  */
-public class NodeImpl implements Node{
+public class NodeImpl implements Node {
     private int key = 0;
 
     public NodeImpl(int value) {
         this.key = value;
     }
+
     /**
      * Returns the key value for the element.
      *

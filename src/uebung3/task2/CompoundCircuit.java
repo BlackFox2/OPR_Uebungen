@@ -7,7 +7,7 @@ package uebung3.task2;
  * @author Markus Marihart
  * @version 1.0
  */
-public abstract class CompoundCircuit implements Circuit{
+public abstract class CompoundCircuit implements Circuit {
 
     Circuit c1;
     Circuit c2;

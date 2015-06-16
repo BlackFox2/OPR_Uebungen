@@ -10,8 +10,9 @@ interface Checksum {
 
     /**
      * Takes a string as input and calculates the checksum
-     * @param input     string from which to calculate the checksum
-     * @return          the calculated checksum
+     *
+     * @param input string from which to calculate the checksum
+     * @return the calculated checksum
      */
     int checksum(String input);
 }

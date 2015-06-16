@@ -14,6 +14,7 @@ public class ResistorTest {
 
     /**
      * Tests the getOhm() funtion.
+     *
      * @throws Exception
      */
     @Test
@@ -29,6 +30,7 @@ public class ResistorTest {
 
     /**
      * Should always return 1
+     *
      * @throws Exception
      */
     @Test

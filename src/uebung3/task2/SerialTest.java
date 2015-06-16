@@ -14,6 +14,7 @@ public class SerialTest {
 
     /**
      * Test the getOhm() function for serial circuits.
+     *
      * @throws Exception
      */
     @Test

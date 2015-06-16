@@ -6,7 +6,7 @@ package uebung3.task1;
  * @author Markus Marihart
  * @version 1.0
  */
-public class CrossTotal implements Checksum{
+public class CrossTotal implements Checksum {
 
 
     /**
@@ -20,7 +20,7 @@ public class CrossTotal implements Checksum{
     public int checksum(String input) {
         byte[] bytes = input.getBytes();
         int sum = 0;
-        for(byte x : bytes) {
+        for (byte x : bytes) {
             sum += calculateSumOfChar(getDigits(x), false, true);
         }
         return sum;
@@ -30,20 +30,20 @@ public class CrossTotal implements Checksum{
      * This method extracts the digits of a byte and returns it in an int array.
      *
      * @param character the byte to work on
-     * @return      the digits stored in an int array
+     * @return the digits stored in an int array
      */
     int[] getDigits(int character) {
         int x = character;
         int[] result;
         int i = 0;
-        if(x >= 100) {
+        if (x >= 100) {
             result = new int[3];
-        } else if(x >= 10){
+        } else if (x >= 10) {
             result = new int[2];
         } else {
             result = new int[1];
         }
-        while(x > 0) {
+        while (x > 0) {
             result[i] = x % 10;
             x /= 10;
             i++;
@@ -57,22 +57,22 @@ public class CrossTotal implements Checksum{
      * To calculate the alternating cross total you have to set isAlternating. Furthermore it is needed to indicate
      * with which sign to start for this number.
      *
-     * @param digits            the digits to work on
-     * @param isAlternating     <code>true</code> calculate the alternating cross total
-     *                          <code>false</code> calculate the normal cross total
-     * @param add               <code>true</code> start with an addition
-     *                          <code>false</code> start with an subtraction
-     * @return                  the checksum for these digits
+     * @param digits        the digits to work on
+     * @param isAlternating <code>true</code> calculate the alternating cross total
+     *                      <code>false</code> calculate the normal cross total
+     * @param add           <code>true</code> start with an addition
+     *                      <code>false</code> start with an subtraction
+     * @return the checksum for these digits
      */
     int calculateSumOfChar(int[] digits, boolean isAlternating, boolean add) {
         int temp = 0;
-        for(int i = digits.length-1; i >= 0; i--) {
-            if(add) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (add) {
                 temp += digits[i];
             } else {
                 temp -= digits[i];
             }
-            if(isAlternating) {
+            if (isAlternating) {
                 add = !add;
             }
         }

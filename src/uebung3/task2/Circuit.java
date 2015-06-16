@@ -9,13 +9,15 @@ package uebung3.task2;
 public interface Circuit {
     /**
      * Returns the resistance of the circuit
-     * @return  the resistance value
+     *
+     * @return the resistance value
      */
     double getOhm();
 
     /**
      * Returns the number of resistors in the circuit
-     * @return  counter of resistors
+     *
+     * @return counter of resistors
      */
     int numberOfResistors();
 }

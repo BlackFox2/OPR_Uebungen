@@ -28,7 +28,7 @@ public class DateChecker {
         System.out.print("Enter year value: ");
         year = s.nextInt();
         System.out.printf("The date value %d/%d/%d is ", day, month, year);
-        if(date.checkDate(year,month,day)) {
+        if (date.checkDate(year, month, day)) {
             System.out.print("a correct date");
         } else {
             System.out.print("not correct");
@@ -39,13 +39,13 @@ public class DateChecker {
     /**
      * Checks the combination of year, month, day
      *
-     * @param year year-value of the date
+     * @param year  year-value of the date
      * @param month month-value of the date
-     * @param day day-value of the date
+     * @param day   day-value of the date
      * @return true if the given date is valid
      */
     public boolean checkDate(int year, int month, int day) {
-        if(year <= 1582 && month <= 10 && day <= 15) {      // date is not in the Gregorian time
+        if (year <= 1582 && month <= 10 && day <= 15) {      // date is not in the Gregorian time
             return false;
         } else {
             if (month >= 1 && month <= 12) {                // valid value for month

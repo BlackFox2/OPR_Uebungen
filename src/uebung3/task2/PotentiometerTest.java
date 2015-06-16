@@ -14,6 +14,7 @@ public class PotentiometerTest {
 
     /**
      * Test if the setOhm() function is working properly.
+     *
      * @throws Exception
      */
     @Test
@@ -35,6 +36,7 @@ public class PotentiometerTest {
 
     /**
      * Should always return 1.
+     *
      * @throws Exception
      */
     @Test

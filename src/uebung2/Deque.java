@@ -6,13 +6,15 @@ package uebung2;
 interface Deque {
     /**
      * Adds a node to the beginning of the list.
-     * @param e     node to add to the beginning
+     *
+     * @param e node to add to the beginning
      */
     void addHead(Node e);
 
     /**
      * Adds a node at the end of the list.
-     * @param e     node to add at the end
+     *
+     * @param e node to add at the end
      */
     void addTail(Node e);
 

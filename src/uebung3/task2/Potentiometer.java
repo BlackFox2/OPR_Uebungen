@@ -13,10 +13,11 @@ public class Potentiometer implements Circuit {
 
     /**
      * Initialisation of the maximum value for the resistance
-     * @param max   double > 0
+     *
+     * @param max double > 0
      */
     public Potentiometer(double max) {
-        if(max < 0) {
+        if (max < 0) {
             this.max = 0;
         } else {
             this.max = max;
@@ -25,12 +26,13 @@ public class Potentiometer implements Circuit {
 
     /**
      * Let's you change the resistance from the potentiometer.
-     * @param ohm   double > 0
+     *
+     * @param ohm double > 0
      */
     public void setOhm(double ohm) {
-        if(ohm < 0) {
+        if (ohm < 0) {
             this.ohm = 0;
-        }else if(ohm > max) {
+        } else if (ohm > max) {
             this.ohm = max;
         } else {
             this.ohm = ohm;
